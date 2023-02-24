@@ -1,3 +1,5 @@
+.idea/
+Gemfile.lock
 /.bundle/
 /.yardoc
 /_yardoc/
