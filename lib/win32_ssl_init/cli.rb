@@ -44,7 +44,8 @@ module Win32SSLInit
 
     def rehash_certs
       Dir.chdir ruby_ssl_cert_folder do
-        `ruby ./c_rehash.rb`
+        puts "Certs placed in #{ruby_ssl_cert_folder}, rehashing"
+        puts `ruby ./c_rehash.rb`
       end
     end
 
