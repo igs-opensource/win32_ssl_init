@@ -25,14 +25,22 @@ module Win32SSLInit
     end
 
     def ruby_ssl_cert_folder
-      "#{ruby_instance}/ssl/certs/"
+      if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('3.2.0')
+        "#{ruby_instance}/bin/etc/ssl/certs/"
+      else
+        "#{ruby_instance}/ssl/certs/"
+      end
     end
 
     def dump_certs
       @certs.each do |cert|
         file_name = determine_file_name(cert)
-        File.write(ruby_ssl_cert_folder + file_name, cert)
+        dump_cert(ruby_ssl_cert_folder + file_name, cert)
       end
+    end
+
+    def dump_cert(cert_path, cert)
+      File.write(cert_path, cert)
     end
 
     ##
