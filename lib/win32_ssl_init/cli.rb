@@ -25,7 +25,7 @@ module Win32SSLInit
     end
 
     def ruby_ssl_cert_folder
-      if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('3.2.0')
+      if (Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('3.2.0')) && (Gem::Version.new(RUBY_VERSION) < Gem::Version.new('3.4.0'))
         "#{ruby_instance}/bin/etc/ssl/certs/"
       else
         "#{ruby_instance}/ssl/certs/"
